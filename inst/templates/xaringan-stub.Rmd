@@ -1,0 +1,12 @@
+---
+title: "TEMP_PRESENTATION_NAME Presentation"
+date: "TEMP_DATE"
+---
+
+```{r, echo = FALSE}
+    xaringanExtra::embed_xaringan(
+    url = '../../presentations/TEMP_PRESENTATION_NAME.html',
+    ratio = "4:3",
+    max_width = 800
+    )
+```

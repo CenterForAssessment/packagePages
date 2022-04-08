@@ -137,7 +137,8 @@ projectPages <- function(pkg = ".",
                        path = "docs",
                        preview = interactive(),
                        encoding = "UTF-8",
-                       vignettes_directory="Documents"
+                       vignettes_directory="Documents",
+                       input_presentations_directory="Presentations"
                        ) {
   if (file.exists("DESCRIPTION")) stop("NOTE: projectPages should not be applied to directories with a pre-existing R package description. Use packagePages() instead.")
   old <- set_pkgdown_env("true")
@@ -148,6 +149,8 @@ projectPages <- function(pkg = ".",
 
   init_site(pkg, path)
 
+  ### build_home, then build_presentations, then build_articles
+  if (input_presentations_directory %in% list.dirs(recursive=FALSE, full.names=FALSE)) build_presentations(output_directory = "docs/presentations", depth = 1L, encoding = encoding, input_presentations_directory=input_presentations_directory)
   build_home(pkg, path = path, encoding = encoding)
   build_articles(pkg, path = file.path(path, "articles"), depth = 1L, encoding = encoding, vignettes_directory="Documents")
 
