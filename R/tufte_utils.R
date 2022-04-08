@@ -120,3 +120,11 @@ scrubPDF <- function(input) {
 
   writeLines(md.text, input)
 }
+
+marginnote_html = function(text = '', icon = '&#8853;') {
+  sprintf(paste0(
+    '<label for="tufte-mn-" class="margin-toggle">%s</label>',
+    '<input type="checkbox" id="tufte-mn-" class="margin-toggle">%s'
+  ), icon, text)
+}
+

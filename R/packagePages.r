@@ -144,7 +144,8 @@ packagePages <- function(pkg = ".",
                        mathjax = TRUE,
                        preview = interactive(),
                        seed = 1014,
-                       encoding = "UTF-8"
+                       encoding = "UTF-8",
+                       input_presentations_directory="Presentations"
                        ) {
   old <- set_pkgdown_env("true")
   on.exit(set_pkgdown_env(old))
@@ -154,6 +155,7 @@ packagePages <- function(pkg = ".",
 
   init_site(pkg, path)
 
+  if (input_presentations_directory %in% list.dirs(recursive=FALSE, full.names=FALSE)) build_presentations(output_directory = "docs/presentations", depth = 1L, encoding = encoding, input_presentations_directory=input_presentations_directory)
   build_home(pkg, path = path, encoding = encoding)
   build_reference(pkg,
     lazy = FALSE,
