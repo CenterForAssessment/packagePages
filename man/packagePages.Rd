@@ -4,9 +4,17 @@
 \alias{packagePages}
 \title{Build packagePages package website}
 \usage{
-packagePages(pkg = ".", path = "docs", examples = TRUE,
-  run_dont_run = FALSE, mathjax = TRUE, preview = interactive(),
-  seed = 1014, encoding = "UTF-8", input_presentations_directory="Presentations")
+packagePages(
+  pkg = ".",
+  path = "docs",
+  examples = TRUE,
+  run_dont_run = FALSE,
+  mathjax = TRUE,
+  preview = interactive(),
+  seed = 1014,
+  encoding = "UTF-8",
+  input_presentations_directory = "Presentations"
+)
 }
 \arguments{
 \item{pkg}{Path to source package. If R working directory is not
@@ -29,7 +37,7 @@ reproducible.}
 
 \item{encoding}{The encoding of the input files.}
 
-\item{input_presentations_directory}{Defaults to Presentations.}
+\item{input_presentations_directory}{Defaults to Presentations}
 }
 \description{
 \code{packagePages()} is a copy of \code{\link{build_site}} so that a parallel function exists against \code{projectPages()}.

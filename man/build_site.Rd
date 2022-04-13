@@ -5,9 +5,16 @@
 \alias{init_site}
 \title{Build pkgdown website}
 \usage{
-build_site(pkg = ".", path = "docs", examples = TRUE,
-  run_dont_run = FALSE, mathjax = TRUE, preview = interactive(),
-  seed = 1014, encoding = "UTF-8")
+build_site(
+  pkg = ".",
+  path = "docs",
+  examples = TRUE,
+  run_dont_run = FALSE,
+  mathjax = TRUE,
+  preview = interactive(),
+  seed = 1014,
+  encoding = "UTF-8"
+)
 
 init_site(pkg = ".", path = "docs")
 }

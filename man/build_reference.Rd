@@ -5,9 +5,16 @@
 \alias{build_reference_index}
 \title{Build reference section}
 \usage{
-build_reference(pkg = ".", lazy = TRUE, examples = TRUE,
-  run_dont_run = FALSE, mathjax = TRUE, seed = 1014,
-  path = "docs/reference", depth = 1L)
+build_reference(
+  pkg = ".",
+  lazy = TRUE,
+  examples = TRUE,
+  run_dont_run = FALSE,
+  mathjax = TRUE,
+  seed = 1014,
+  path = "docs/reference",
+  depth = 1L
+)
 
 build_reference_index(pkg = ".", path = "docs/reference", depth = 1L)
 }
@@ -93,7 +100,7 @@ retina display). Icons are matched to topics by aliases.
 a <- 1:100
 a
 
-cat("This some text!\\n")
+cat("This some text!\n")
 message("This is a message!")
 warning("This is a warning!")
 

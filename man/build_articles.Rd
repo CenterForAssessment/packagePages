@@ -4,8 +4,14 @@
 \alias{build_articles}
 \title{Build articles}
 \usage{
-build_articles(pkg = ".", path = "docs/articles", depth = 1L,
-  encoding = "UTF-8", quiet = TRUE, vignettes_directory = "vignettes")
+build_articles(
+  pkg = ".",
+  path = "docs/articles",
+  depth = 1L,
+  encoding = "UTF-8",
+  quiet = TRUE,
+  vignettes_directory = "vignettes"
+)
 }
 \arguments{
 \item{pkg}{Path to source package. If R working directory is not
