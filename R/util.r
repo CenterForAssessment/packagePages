@@ -267,8 +267,7 @@ trimWhiteSpace <- function(line) gsub("(^ +)|( +$)", "", line)
 ###  Get YAML from .Rmd file
 getYAML <- function(input, element=NULL){
   con <- file(input) # input file
-#  rmd.text <- rmarkdown:::read_utf8(con, getOption("encoding"))
-  rmd.text <- rmarkdown:::read_utf8(con)
+  rmd.text <- read_utf8(con)
   # Valid YAML could end in "---" or "..."  - test for both.
   rmd.yaml <- rmd.text[grep("---", rmd.text)[1]:ifelse(length(grep("---", rmd.text))>=2, grep("---", rmd.text)[2], grep("[.][.][.]", rmd.text)[1])]
   close(con)
@@ -286,4 +285,11 @@ searchYAML <- function(input, element="includes"){
   yml <- getYAML(input)
   yml <-yaml::yaml.load(paste(yml[-c(grep("---", yml), grep("[.][.][.]", yml))], collapse="\n"))
   if (!is.null(yml[[element]]))  return(yml[[element]])
+}
+
+read_utf8 <- function(file) {
+  if (inherits(file, 'connection')) con <- file else {
+    con <- base::file(file, encoding = 'UTF-8'); on.exit(close(con), add = TRUE)
+  }
+  enc2utf8(readLines(con, warn = FALSE))
 }

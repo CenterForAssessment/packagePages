@@ -49,8 +49,8 @@ template_resources = function(name, ...) {
 }
 
 # import two helper functions from knitr
-is_html_output = function(...) knitr:::is_html_output(...)
-is_latex_output = function(...) knitr:::is_latex_output(...)
+is_html_output = function(...) knitr::is_html_output(...)
+is_latex_output = function(...) knitr::is_latex_output(...)
 
 gsub_fixed = function(...) gsub(..., fixed = TRUE)
 
@@ -67,8 +67,7 @@ searchYAML <- function(input, element="includes"){
 
 
 scrubPDF <- function(input) {
-#  md.text <- rmarkdown:::read_utf8(file(input), getOption("encoding"))
-  md.text <- rmarkdown:::read_utf8(file(input))
+  md.text <- read_utf8(file(input))
 
   #  Equations
   # tmp.latex.eqn <- list()
