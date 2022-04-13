@@ -1,5 +1,8 @@
 #' @importFrom magrittr %>%
 #' @importFrom roxygen2 roxygenise
+#' @importFrom crayon magenta
+#' @importFrom toOrdinal toOrdinalDate
+#' @importFrom utils packageVersion
 NULL
 
 inst_path <- function() {

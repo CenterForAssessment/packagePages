@@ -12,7 +12,6 @@
 #'   \code{tufte_html()}; these arguments have been set internally)
 #' @references See \url{http://rstudio.github.io/tufte} for an example.
 #' @export
-#' @examples library(tufte)
 tufte_handout = function(
   fig_width = 4, fig_height = 2.5, fig_crop = TRUE, dev = 'pdf',
   highlight = 'default', ...
@@ -28,7 +27,20 @@ tufte_book = function(
 ) {
   tufte_pdf('tufte-book', fig_width, fig_height, fig_crop, dev, highlight, ...)
 }
-
+#' Tufte PDF function
+#'
+#' @param documentclass Document Class
+#' @param fig_width Width of figure
+#' @param fig_height Height of figure
+#' @param fig_crop Crop figure (default to TRUE)
+#' @param dev Graphics device (defaults to pdf)
+#' @param highlight Style of highlight (defaults to default)
+#' @param template Template to use
+#' @param latex_engine LaTeX engine to use (defaults to xelatex)
+#' @param includes Stuff to include
+#' @param pandoc_args Arguments passed to pandoc
+#' @param ... Further arguments to be passed in 
+#' @export
 tufte_pdf = function(
   documentclass = c('tufte-handout', 'tufte-book'), fig_width = 4, fig_height = 2.5,
   fig_crop = TRUE, dev = 'pdf', highlight = 'default',

@@ -36,7 +36,7 @@ The \code{NEWS.md} file should be formatted somewhat like this:
 
 ## Major changes
 
-- Fresh approach based on the staticdocs package. Site configuration now based on YAML files.
+ - Fresh approach based on the staticdocs package. Site configuration now based on YAML files.
 
 ...
 }

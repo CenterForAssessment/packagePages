@@ -128,6 +128,7 @@
 #' @param preview If \code{TRUE}, will preview freshly generated site
 #' @param encoding Defaults to UTF-8
 #' @param vignettes_directory Defaults to Documents
+#' @param input_presentations_directory Defaults to Presentations 
 #' @export
 #' @examples
 #' \dontrun{

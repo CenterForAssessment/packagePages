@@ -132,6 +132,7 @@
 #' @param path Location in which to save website, relative to package
 #'   path.
 #' @param preview If \code{TRUE}, will preview freshly generated site
+#' @param input_presentations_directory Defaults to Presentations
 #' @export
 #' @examples
 #' \dontrun{
