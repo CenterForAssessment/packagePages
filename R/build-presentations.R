@@ -19,7 +19,10 @@ build_presentations <- function(output_directory = "docs/presentations", depth =
       if (!dir.exists(paste0("../", output_directory))) dir.create(paste0("../", output_directory), showWarnings=FALSE)
       file.copy(paste0(tmp_file_name, ".html"), paste0("../", output_directory, "/", tmp_file_name, ".html"), overwrite=TRUE)
       unlink(paste0(tmp_file_name, ".html"))
-      R.utils::copyDirectory(paste0(tmp_file_name, "_files"), paste0("../", output_directory, "/", tmp_file_name, "_files"), recursive=TRUE)
+      if (dir.exists(paste0(tmp_file_name, "_files"))) {
+          R.utils::copyDirectory(paste0(tmp_file_name, "_files"), paste0("../", output_directory, "/", tmp_file_name, "_files"), recursive=TRUE)
+          unlink(paste0(tmp_file_name, "_files"), recursive=TRUE)
+      }
       unlink(paste0(tmp_file_name, "_files"), recursive=TRUE)
       R.utils::copyDirectory("libs", paste0("../", output_directory, "/libs"), recursive=TRUE)
       unlink("libs", recursive=TRUE)

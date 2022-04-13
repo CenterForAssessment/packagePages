@@ -178,7 +178,8 @@ build_rmarkdown_format <- function(pkg = ".",
         toc_depth = 2,
         self_contained = FALSE,
         theme = NULL,
-        template = path
+        template = path,
+        anchor_sections = TRUE
       )
     ))
   }
@@ -203,7 +204,8 @@ build_rmarkdown_format <- function(pkg = ".",
         toc_depth = 2,
         self_contained = FALSE,
         template = path,
-        pandoc_args = tmp.bib
+        pandoc_args = tmp.bib,
+        anchor_sections = TRUE
       )
     ))
   }
