@@ -30,7 +30,10 @@ build_presentations <- function(output_directory = "docs/presentations", depth =
   input_Rmd_presentations <- list.files(pattern="Rmd")
   for (presentations_names_iter in input_Rmd_presentations) {
       tmp_file_name <- gsub(".Rmd", "", presentations_names_iter)
-      rmarkdown::render(presentations_names_iter)
+      xfun::Rscript_call(
+          rmarkdown::render,
+          list(input = presentations_names_iter, clean = 'TRUE')
+      )
       if (!dir.exists(paste0("../", output_directory))) dir.create(paste0("../", output_directory), showWarnings=FALSE)
       file.copy(paste0(tmp_file_name, ".html"), paste0("../", output_directory, "/", tmp_file_name, ".html"), overwrite=TRUE)
       unlink(paste0(tmp_file_name, ".html"))
