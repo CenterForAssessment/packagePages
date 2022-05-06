@@ -21,8 +21,12 @@
 #'   pandoc. This is useful when debugging.
 #' @param input_presentations_directory Defaults to Presentations
 #' @export
-build_presentations <- function(output_directory = "docs/presentations", depth = 1L,
-                           encoding = "UTF-8", quiet = TRUE, input_presentations_directory="Presentations") {
+build_presentations <- function(
+                            output_directory = "docs/presentations", 
+                            depth = 1L,
+                            encoding = "UTF-8",
+                            quiet = TRUE,
+                            input_presentations_directory="Presentations") {
 
   ### render presentations
   home_directory <- getwd()
@@ -49,13 +53,6 @@ build_presentations <- function(output_directory = "docs/presentations", depth =
           presentation_stub <- gsub("TEMP_DATE", toOrdinalDate(Sys.Date()), presentation_stub)
           write(presentation_stub, file=paste0("../Documents/presentations/", presentations_names_iter))
       }
-#      if (!file.exists(file.path("..", "Documents", "presentations", presentations_names_iter))) {
-#          if (!dir.exists(file.path("..", "Documents", "presentations"))) dir.create(file.path("..", "Documents", "presentations"), showWarnings=FALSE)
-#          presentation_stub <- readLines(system.file("templates", "xaringan-stub.Rmd", package = "packagePages"), encoding='UTF-8')
-#          presentation_stub <- gsub("TEMP_PRESENTATION_NAME", tmp_file_name, presentation_stub)
-#          presentation_stub <- gsub("TEMP_DATE", toOrdinalDate(Sys.Date()), presentation_stub)
-#          write(presentation_stub, file=paste0("../Documents/presentations/", presentations_names_iter))
-#      }
   }
   setwd(home_directory)
 } ### build_presentations function
