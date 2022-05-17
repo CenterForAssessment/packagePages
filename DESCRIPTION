@@ -1,5 +1,5 @@
 Package: packagePages
-Version: 0.1-0.5
+Version: 0.1-0.6
 Title: Customized Clone of pkgdown for Creating Static HTML Documentation for an R Package
 Description: Generate beautiful and useful static GitHub pages from an R source package.
 Authors@R: c(
@@ -11,11 +11,13 @@ Depends:
     R (>= 4.0.0)
 Imports:
     callr,
+    curl,
     crayon,
     desc,
     digest,
     evaluate,
     highlight,
+    jsonlite,
     magick,
     magrittr,
     purrr,
