@@ -283,7 +283,6 @@ getYAML <- function(input, element=NULL){
   }
 }
 
-
 searchYAML <- function(input, element="includes"){
   yml <- getYAML(input)
   yml <-yaml::yaml.load(paste(yml[-c(grep("---", yml), grep("[.][.][.]", yml))], collapse="\n"))
@@ -295,4 +294,12 @@ read_utf8 <- function(file) {
     con <- base::file(file, encoding = 'UTF-8'); on.exit(close(con), add = TRUE)
   }
   enc2utf8(readLines(con, warn = FALSE))
+}
+
+getGitHubTopics <- function(github_url) {
+  topic_url <- paste0(gsub("github.com", "api.github.com/repos", github_url), "/topics")
+  con <- curl::curl(topic_url)
+  keywords <- paste(jsonlite::fromJSON(readLines(con, warn=FALSE))[['names']], collapse=", ") 
+  close(con) 
+  return(keywords)
 }

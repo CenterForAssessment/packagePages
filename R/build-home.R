@@ -52,6 +52,9 @@ build_home <- function(pkg = ".", path = "docs", depth = 0L, encoding = "UTF-8")
 
     if (file_ext == "md") {
       data$index <- markdown(path = data$path, depth = 0L, index = pkg$topics)
+      data$description <- pkg[['meta']][['DESCRIPTION']][['Description']]
+      data$keywords <- getGitHubTopics(pkg[['meta']][['navbar']][['right']][[1]][['href']])
+      data$repo_name <- tail(unlist(strsplit(pkg[['meta']][['navbar']][['right']][[1]][['href']], "/")), 1)
       render_page(pkg, "home", data, out_path(path, "index.html"), depth = depth)
     } else if (file_ext == "Rmd") {
       if (identical(file_name, "README")) {

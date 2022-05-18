@@ -170,6 +170,10 @@ packagePages <- function(pkg = ".",
   build_articles(pkg, path = file.path(path, "articles"), depth = 1L, encoding = encoding)
   build_news(pkg, path = file.path(path, "news"), depth = 1L)
 
+  if (!file.exists(file.path(path, "img", "REPO_CARD_image.png"))) {
+    webshot2::webshot(file.path(path, "index.html"), vwidth=1241, vheight=650, cliprect="viewport", file=file.path(path, "img", "REPO_CARD_image.png"))
+  }
+
   if (preview) {
     preview_site(path)
   }

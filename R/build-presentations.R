@@ -35,8 +35,11 @@ build_presentations <- function(
   for (presentations_names_iter in input_Rmd_presentations) {
       tmp_file_name <- gsub(".Rmd", "", presentations_names_iter)
       xfun::Rscript_call(rmarkdown::render, list(input=presentations_names_iter, clean='TRUE'))
+
       if (!dir.exists(paste0("../", output_directory))) dir.create(paste0("../", output_directory), showWarnings=FALSE)
       file.copy(paste0(tmp_file_name, ".html"), paste0("../", output_directory, "/", tmp_file_name, ".html"), overwrite=TRUE)
+      if (!dir.exists(paste0("../", output_directory, "/", tmp_file_name, "_files"))) dir.create(paste0("../", output_directory, "/", tmp_file_name, "_files"), showWarnings=FALSE)
+      cfaDocs::shareImage(presentations_names_iter, path_image=paste0("../", output_directory, "/", tmp_file_name, "_files/TITLE_SLIDE_image.png" ))
       unlink(paste0(tmp_file_name, ".html"))
       if (dir.exists(paste0(tmp_file_name, "_files"))) {
           R.utils::copyDirectory(paste0(tmp_file_name, "_files"), paste0("../", output_directory, "/", tmp_file_name, "_files"), recursive=TRUE)
