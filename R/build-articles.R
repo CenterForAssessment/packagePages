@@ -81,7 +81,12 @@ build_articles <- function(pkg = ".", path = "docs/articles", depth = 1L,
     depth = pkg$vignettes$vig_depth + depth,
     style = art.style
   )
-  data <- list(pagetitle = "$title$")
+  data <- list(
+    pagetitle = "$title$",
+    description = pkg[['meta']][['DESCRIPTION']][['Description']],
+    keywords = getGitHubTopics(pkg[['meta']][['navbar']][['right']][[1]][['href']]),
+    repo_name = tail(unlist(strsplit(pkg[['meta']][['navbar']][['right']][[1]][['href']], "/")), 1) 
+  )
   purrr::pwalk(articles, render_rmd,
     pkg = pkg,
     data = data,

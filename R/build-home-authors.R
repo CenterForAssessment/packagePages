@@ -99,7 +99,10 @@ build_authors <- function(pkg = ".", path = "docs", depth = 0L) {
 
   data <- list(
     pagetitle = "Authors",
-    authors = data_authors(pkg)$all
+    authors = data_authors(pkg)$all,
+    description = pkg[['meta']][['DESCRIPTION']][['Description']],
+    keywords = getGitHubTopics(pkg[['meta']][['navbar']][['right']][[1]][['href']]),
+    repo_name = tail(unlist(strsplit(pkg[['meta']][['navbar']][['right']][[1]][['href']], "/")), 1) 
   )
 
   render_page(pkg, "authors", data, file.path(path, "authors.html"), depth = depth)

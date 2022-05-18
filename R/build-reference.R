@@ -146,9 +146,14 @@ build_reference_index <- function(pkg = ".", path = "docs/reference", depth = 1L
     copy_dir(logo_path, file.path(path, "icons"))
   }
 
+  data <- data_reference_index(pkg, depth = depth)
+  data$description <- pkg[['meta']][['DESCRIPTION']][['Description']]
+  data$keywords <- getGitHubTopics(pkg[['meta']][['navbar']][['right']][[1]][['href']])
+  data$repo_name <- tail(unlist(strsplit(pkg[['meta']][['navbar']][['right']][[1]][['href']], "/")), 1)
+
   render_page(
     pkg, "reference-index",
-    data = data_reference_index(pkg, depth = depth),
+    data = data,
     path = out_path(path, "index.html"),
     depth = depth
   )
@@ -173,17 +178,14 @@ build_reference_topic <- function(topic,
   if (lazy && !out_of_date(in_path, out_path))
     return(invisible())
 
+  data <- data_reference_topic(topic, pkg, path = path, examples = examples, run_dont_run = run_dont_run, mathjax = mathjax, depth = depth) 
+  data$description <- pkg[['meta']][['DESCRIPTION']][['Description']]
+  data$keywords <- getGitHubTopics(pkg[['meta']][['navbar']][['right']][[1]][['href']])
+  data$repo_name <- tail(unlist(strsplit(pkg[['meta']][['navbar']][['right']][[1]][['href']], "/")), 1)
+
   render_page(
     pkg, "reference-topic",
-    data = data_reference_topic(
-      topic,
-      pkg,
-      path = path,
-      examples = examples,
-      run_dont_run = run_dont_run,
-      mathjax = mathjax,
-      depth = depth
-    ),
+    data = data,
     path = out_path,
     depth = depth
   )

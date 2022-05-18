@@ -62,7 +62,10 @@ build_news_single <- function(pkg, path, depth) {
     list(
       version = "All releases",
       contents = news %>% purrr::transpose(),
-      pagetitle = "Change log"
+      pagetitle = "Change log",
+      description = pkg[['meta']][['DESCRIPTION']][['Description']],
+      keywords = getGitHubTopics(pkg[['meta']][['navbar']][['right']][[1]][['href']]),
+      repo_name = tail(unlist(strsplit(pkg[['meta']][['navbar']][['right']][[1]][['href']], "/")), 1) 
     ),
     file.path(path, "index.html"),
     depth = depth
