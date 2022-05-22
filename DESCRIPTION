@@ -39,7 +39,7 @@ Suggests:
     devtools,
     knitr
 Remotes:
-    centerforassessment/cfaTools
+    centerforassessment/cfaDocs
 VignetteBuilder: knitr
 URL: https://github.com/centerforassessment/packagePages
 BugReports: https://github.com/centerforassessment/packagePages/issues
