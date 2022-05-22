@@ -100,7 +100,11 @@ build_authors <- function(pkg = ".", path = "docs", depth = 0L) {
   data <- list(
     pagetitle = "Authors",
     authors = data_authors(pkg)$all,
-    description = pkg[['meta']][['DESCRIPTION']][['Description']],
+    if (!is.null(pkg[['meta']][['DESCRIPTION']][['Description']])) {
+      description = pkg[['meta']][['DESCRIPTION']][['Description']]
+    } else {
+      description = as.character(read_desc()$get("Description"))
+    },
     keywords = getGitHubTopics(pkg[['meta']][['navbar']][['right']][[1]][['href']]),
     repo_name = tail(unlist(strsplit(pkg[['meta']][['navbar']][['right']][[1]][['href']], "/")), 1) 
   )

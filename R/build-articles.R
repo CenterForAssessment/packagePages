@@ -83,7 +83,11 @@ build_articles <- function(pkg = ".", path = "docs/articles", depth = 1L,
   )
   data <- list(
     pagetitle = "$title$",
-    description = pkg[['meta']][['DESCRIPTION']][['Description']],
+    if (!is.null(pkg[['meta']][['DESCRIPTION']][['Description']])) {
+      description = pkg[['meta']][['DESCRIPTION']][['Description']]
+    } else {
+      description = as.character(read_desc()$get('Description'))
+    },
     keywords = getGitHubTopics(pkg[['meta']][['navbar']][['right']][[1]][['href']]),
     repo_name = tail(unlist(strsplit(pkg[['meta']][['navbar']][['right']][[1]][['href']], "/")), 1) 
   )
