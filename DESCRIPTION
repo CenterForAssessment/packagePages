@@ -38,9 +38,6 @@ Imports:
 Suggests:
     devtools,
     knitr
-Remotes:
-    r-pkgs/pkgload,
-    r-pkgs/usethis
 VignetteBuilder: knitr
 URL: https://github.com/centerforassessment/packagePages
 BugReports: https://github.com/centerforassessment/packagePages/issues
