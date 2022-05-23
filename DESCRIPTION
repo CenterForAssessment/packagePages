@@ -23,6 +23,7 @@ Imports:
     magrittr,
     purrr,
     pkgload,
+    remotes,
     rmarkdown (>= 1.1.9007),
     roxygen2,
     R.utils,
