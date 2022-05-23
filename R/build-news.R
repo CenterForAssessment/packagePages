@@ -63,7 +63,11 @@ build_news_single <- function(pkg, path, depth) {
       version = "All releases",
       contents = news %>% purrr::transpose(),
       pagetitle = "Change log",
-      description = pkg[['meta']][['DESCRIPTION']][['Description']],
+      if (!is.null(pkg[['meta']][['DESCRIPTION']][['Description']])) {
+        description = pkg[['meta']][['DESCRIPTION']][['Description']]
+      } else {
+        description = as.character(read_desc()$get("Description"))
+      },
       keywords = getGitHubTopics(pkg[['meta']][['navbar']][['right']][[1]][['href']]),
       repo_name = tail(unlist(strsplit(pkg[['meta']][['navbar']][['right']][[1]][['href']], "/")), 1) 
     ),

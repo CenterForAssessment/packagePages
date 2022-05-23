@@ -1,5 +1,5 @@
 Package: packagePages
-Version: 0.1-0.9
+Version: 0.1-1.0
 Title: Customized Clone of pkgdown for Creating Static HTML Documentation for an R Package
 Description: Generate beautiful and useful static GitHub pages from an R source package.
 Authors@R: c(
@@ -23,6 +23,7 @@ Imports:
     magrittr,
     purrr,
     pkgload,
+    remotes,
     rmarkdown (>= 1.1.9007),
     roxygen2,
     R.utils,
@@ -39,8 +40,7 @@ Suggests:
     devtools,
     knitr
 Remotes:
-    r-pkgs/pkgload,
-    r-pkgs/usethis
+    centerforassessment/cfaDocs
 VignetteBuilder: knitr
 URL: https://github.com/centerforassessment/packagePages
 BugReports: https://github.com/centerforassessment/packagePages/issues

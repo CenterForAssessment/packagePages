@@ -147,7 +147,11 @@ build_reference_index <- function(pkg = ".", path = "docs/reference", depth = 1L
   }
 
   data <- data_reference_index(pkg, depth = depth)
-  data$description <- pkg[['meta']][['DESCRIPTION']][['Description']]
+  if (!is.null(pkg[['meta']][['DESCRIPTION']][['Description']])) {
+    data$description <- pkg[['meta']][['DESCRIPTION']][['Description']]
+  } else {
+    data$description <- read_desc()$get("Description")
+  }
   data$keywords <- getGitHubTopics(pkg[['meta']][['navbar']][['right']][[1]][['href']])
   data$repo_name <- tail(unlist(strsplit(pkg[['meta']][['navbar']][['right']][[1]][['href']], "/")), 1)
 
@@ -179,7 +183,11 @@ build_reference_topic <- function(topic,
     return(invisible())
 
   data <- data_reference_topic(topic, pkg, path = path, examples = examples, run_dont_run = run_dont_run, mathjax = mathjax, depth = depth) 
-  data$description <- pkg[['meta']][['DESCRIPTION']][['Description']]
+  if (!is.null(pkg[['meta']][['DESCRIPTION']][['Description']])) {
+    data$description <- pkg[['meta']][['DESCRIPTION']][['Description']]
+  } else {
+    data$description <- as.character(read_desc()$get("Description"))
+  }
   data$keywords <- getGitHubTopics(pkg[['meta']][['navbar']][['right']][[1]][['href']])
   data$repo_name <- tail(unlist(strsplit(pkg[['meta']][['navbar']][['right']][[1]][['href']], "/")), 1)
 
